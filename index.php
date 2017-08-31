@@ -1,5 +1,44 @@
 <?php 
 
+
+
+
+/*
+/main/index
+/main/login
+
+
+/teacher/add
+/teacher/list
+
+
+变量命名方式
+分支结构
+字符串拼接
+include关键字作用：嵌入子页面
+常用api
+1.array_key_exists()
+2.substr()  截取字符串
+3.explide（）分割字符串
+4.count() 统计数组的长度
+5.数组的基本使用
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $dir ='main';//默认目录名称
 $filename='index';//默认文件名称
 
@@ -11,7 +50,7 @@ $filename='index';//默认文件名称
 
 
 
-//va_dump($_SERVER);
+// va_dump($_SERVER);
 //判断数组中是否包含指定的属性
 if (array_key_exists('PATH_INFO',$_SERVER)) {
     // 路经只是URL的一部分，并不是全部的url
