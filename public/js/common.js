@@ -1,13 +1,12 @@
 
-	NProgress.start();
 
-	NProgress.done();
-
-	$('.navs ul').prev('a').on('click', function () {
-		$(this).next().slideToggle();
-	});
-
-
+define(['jquery'],function($){
+  // NProgress.start();
+  // NProgress.done();
+  //控制左侧菜单的折叠和展开。。
+  $('.navs ul').prev('a').on('click', function () {
+    $(this).next().slideToggle();
+  });
 
     //退出功能
   $('#logoutBtn').click(function(){
@@ -24,3 +23,13 @@
     }
   });
   });
+});
+
+
+
+
+
+
+
+	
+
