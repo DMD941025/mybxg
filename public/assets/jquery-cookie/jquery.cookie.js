@@ -13,7 +13,8 @@
 		// CommonJS
 		factory(require('jquery'));
 	} else {
-		// Browser globals
+		// Browser
+		 globals
 		factory(jQuery);
 	}
 }(function ($) {
