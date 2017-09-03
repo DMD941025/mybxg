@@ -32,7 +32,7 @@ define(['jquery','cookie'],function($){
 */
 
                 // 先保存cookie，保存的方式如下：
-                // 名字是随便起的
+                // 第1个参数名字是随便起的
                 // data.result是对象。而cookie里面的值只能存字符串。所以要把他转成字符串。
                 // 还要加第3个参数，因为把它设到根目录，所有的页面都可以得到。
                 $.cookie('loginInfo',JSON.stringify(data.result),{path:'/'});

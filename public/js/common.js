@@ -1,6 +1,19 @@
 
 
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
+
+// template不能写在cookie的后面，因为cookie返回值，没有返回值的同意写到后面。
+
+
+
+
+
+
+
+
+
+
+
 // 注意：在这里引入cookie，不需要接收（不需要传参）
 // 因为cookie是jquery的插件，cookie的方法就加到了$上。
 // cookie的方法就加到了cookie上。
@@ -14,7 +27,7 @@ define(['jquery','cookie'],function($){
 
     //退出功能
   $('#logoutBtn').click(function(){
-    console.log(123);
+    // console.log(123);检验是否绑定。
   $.ajax({
     type:'post',
     url:'/api/logout',
@@ -47,12 +60,33 @@ var loginInfo=$.cookie('loginInfo');
 // {"tc_name":"admin","tc_avatar":"http://static.botue.com/images/avatar/596832a258e15.png"}
 
 // 再把它转换成对象：
-var info=JSON.parse(loginInfo);
+// 还要判断是否有cookie值
+var info=loginInfo?JSON.parse(loginInfo):{};
 // console.log(info);//{tc_name: "admin", tc_avatar: "http://static.botue.com/images/avatar/596832a258e15.png"}
 
 // 转换成对象之后要把它渲染一下。
-$('.profile img').attr('src',info.tc_avatar);
-$('.profile h4').html(info.tc_name);//改内容
+
+
+
+// 模板：用的是artTem的late 4.0版本api方法。
+var tplstr=' <div class="avatar img-circle">'
+            +'    <img src="{{tc_avatar}}">'
+            +'</div>'
+            +'<h4>{{tc_name}}</h4>';
+
+// 调用artTemplate的api
+var html=template.render(tplstr,info);
+
+ $('.aside .profile').html(html);
+
+
+
+
+
+
+
+// $('.profile img').attr('src',info.tc_avatar);
+// $('.profile h4').html(info.tc_name);//改内容
 
 
 
