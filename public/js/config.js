@@ -8,9 +8,12 @@ require.config({
         bootstrap:'bootstrap/js/bootstrap.min',
         common:'../js/common',
         login:'../js/login',
-        teacherlist:'../js/teacher-list'
+        index:'../js/index',
+        teacherlist:'../js/teacher-list',
+        util:'../js/util'
+
     },
-    //做兼容用的垫片(deps是depends依赖的意思)
+    //做兼容用的垫片(deps是一个固定的属性，是depends依赖的意思)
     shim:{
         bootstrap:{
             deps :['jquery'],

@@ -1,11 +1,20 @@
-define(['jquery','template','bootstrap'],function($,template){
+define(['jquery','template','util','bootstrap'],function($,template,util){
+//设置导航菜单选中。
+
+util.setMenu(location.pathname);
+
+
+
+
 
  //bootstrap这个插件要依赖jquery，但bootstrap这个文件不是标准require的模块。
  //所以要做兼容。既在config.js配置中加兼容垫片。
 //加载依赖
 //console.log(123);
+//设置导航菜单选中(属性选择器)用属性选择器选中它，然后给他个类。
+$('.navs a[href="'+location.pathname+'"]').addClass('active');
 
-
+// console.log(location.pathname);//   /teacher/list
 $.ajax({
   type:'get',
   url:'/api/teacher',
