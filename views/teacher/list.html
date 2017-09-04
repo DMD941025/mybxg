@@ -53,7 +53,6 @@
                         </thead>
                         <tbody id="teacherInfo">
                       <!-- 挖个坑 -->
-                          
 
 
 
@@ -76,6 +75,10 @@
                 <div class="panel-body">
                     <table class="table table-bordered table-condensed" id='modalInfo'>
                       <!-- 挖个坑 -->
+
+
+
+
                     </table>
                 </div>
             </div>
@@ -148,8 +151,8 @@
               {{/if}}
               </td>
               <td>{{$value.tc_cellphone}}</td>
-             <!--  访问的时候方便些加一个自定义属性 -->
-              <td data-tcId="{{$value.tc_id}}" >
+             <!--  访问的时候方便些加一个自定义属性  加自定义属性是为了后面发送ajax需要用的参数，要获取到他们的值-->
+              <td data-tcId="{{$value.tc_id}}" data-status="{{$value.tc_status}}">
              
             <!--   因为这里使用的bootstrap插件(模态框插件)，都有两种用法：1.样式直接可以触发(类名直接可以触发)，
               这里的自定义属性data-toggle="modal"，直接触发弹窗。另外一种就是js来控制。
@@ -159,7 +162,14 @@
              
                 <a href="#teacherModal" class="btn btn-info btn-xs preview">查 看</a>
                   <a href="./teacher_a  dd.html" class="btn btn-info btn-xs">编 辑</a>
-                  <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
+                  <a href="javascript:;" class="btn btn-warning btn-xs eod">
+                      {{if $value.tc_status==0}}
+                      注销
+                      {{else}}
+                      启用
+                      {{/if}}
+                  </a>
+                  <!-- 注销账号实际上是改的数据库，改的数据库中的一种状态值-->
               </td>
             </tr>
   {{/each}}  
