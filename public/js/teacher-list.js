@@ -1,6 +1,7 @@
 define(['jquery','template','util','bootstrap'],function($,template,util){
 //设置导航菜单选中。
-
+  var ret=util.qs('flag');
+  console.log(ret);
 util.setMenu(location.pathname);
 
 
@@ -20,7 +21,7 @@ $.ajax({
   url:'/api/teacher',
   dataType:'json',
   success:function(data){
-         console.log(data);//会得到和数据库中的数据
+         // console.log(data);//会得到和数据库中的数据
          //解析数据渲染页面
          var html=template('teacherTpl',{list:data.result});//这个list是给模板用的（自己起的名字）；
          $('#teacherInfo').html(html);
