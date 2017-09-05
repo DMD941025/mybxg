@@ -11,6 +11,8 @@ require.config({
         //不需要再加define.
         language:'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         //language不是jquery标准的插件，需要加垫片。
+        validate:'validate/jquery-validate.min',
+        // validate是一个jquery插件，但不是标准，所以要加垫片。
         common:'../js/common',
         login:'../js/login',
         index:'../js/index',
@@ -26,7 +28,11 @@ require.config({
         },
         language:{
             deps:['jquery','datepicker']
+        },
+        validate:{
+            deps:['jquery']
         }
+
     }
 });
 

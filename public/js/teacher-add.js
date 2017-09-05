@@ -1,4 +1,11 @@
-define(['jquery','template','util','datepicker','language'],function($,template,util){
+define(['jquery','template','util','datepicker','language','validate'],function($,template,util){
+
+      //validate不需要参数接收，因为它是插件。
+
+
+
+
+
    //起别名方便使用，如果用路径会太麻烦。
     //设置菜单选中
     util.setMenu('/teacher/list');
@@ -32,22 +39,62 @@ define(['jquery','template','util','datepicker','language'],function($,template,
 
     }
     //提交表单公共方法
-    function submitForm(url){
-      $('#teacherBtn').click(function(){
-         $.ajax({
-            type:'post',
-            url:url,
-            data:$('#teacherForm').serialize(),
-            dataType:'json',
-            success:function(data){
 
-                if(data.code==200){
-                    location.href='/teacher/list';
-                }
-                // console.log(data);
-            }
+//1.有validate插件，提交。
+function submitForm(url){
+    $('#teacherForm').validate({
+       sendForm:false,//表单默认不提交，要提交的话，需要手动提交
+       valid:function(){
+        // console.log('ok');
+        //这里应该提交表单：
 
-         });
-      });
-    }
+       },
+       description:{
+        tc_name:{
+            required:'请输入用户名',
+            valid:'用户名可以使用'
+        },
+        tc_pass:{
+            required:'请输入密码',
+            pattern:'密码必须是6位数',
+            valid:'密码有效'
+        },
+        tc_join_date:{
+             required:'请输入日期',
+            valid:'日期有效'
+        }
+       }
+    });
+}
+      
+
+
+
+
+
+
+
+
+
+
+
+
+    //2.有validate插件就不用下面方法提交
+    // function submitForm(url){
+    //   $('#teacherBtn').click(function(){
+    //      $.ajax({
+    //         type:'post',
+    //         url:url,
+    //         data:$('#teacherForm').serialize(),
+    //         dataType:'json',
+    //         success:function(data){
+
+    //             if(data.code==200){
+    //                 location.href='/teacher/list';
+    //             }
+    //             // console.log(data);
+    //         }
+    //      });
+    //   });
+    // }
 });
