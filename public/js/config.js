@@ -20,7 +20,8 @@ require.config({
         index:'../js/index',
         teacherlist:'../js/teacher-list',
         teacheradd:'../js/teacher-add',
-        util:'../js/util'
+        util:'../js/util',
+        settings:'../js/settings'
 
     },
     //做兼容用的垫片(deps是一个固定的属性，是depends依赖的意思)
