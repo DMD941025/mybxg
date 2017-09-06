@@ -10,6 +10,8 @@ require.config({
         // datepicker是jquery插件；是标准的模块。可以查看插件中有没有define,有的话就是标准的。
         //不需要再加define.
         language:'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        form:'jquery-form/jquery.form',
+        //是标准模块，不用加shim兼容。
         //language不是jquery标准的插件，需要加垫片。
         validate:'validate/jquery-validate.min',
         // validate是一个jquery插件，但不是标准，所以要加垫片。

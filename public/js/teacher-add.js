@@ -1,4 +1,5 @@
-define(['jquery','template','util','datepicker','language','validate'],function($,template,util){
+define(['jquery','template','util','datepicker','language','validate','form'],
+    function($,template,util){
 
       //validate不需要参数接收，因为它是插件。
 
@@ -47,6 +48,16 @@ function submitForm(url){
        valid:function(){
         // console.log('ok');
         //这里应该提交表单：
+        $(this).ajaxSubmit({
+            type:'post',
+            url:url,
+            dataType:'json',
+            success:function(data){
+                if (data.code==200){
+                    location.href='/teacher/list';
+                }
+            }
+        })
 
        },
        description:{
