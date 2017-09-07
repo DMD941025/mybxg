@@ -17,6 +17,8 @@ require.config({
         // validate是一个jquery插件，但不是标准，所以要加垫片。
         uploadify:'uploadify/jquery.uploadify',
         //uploadify不是jquery标准插件，需要加垫片
+        region:'jquery-region/jquery.region',
+        //region是标准模块，不需要加垫片
         common:'../js/common',
         login:'../js/login',
         index:'../js/index',
