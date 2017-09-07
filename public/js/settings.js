@@ -1,4 +1,4 @@
-define(['jquery','template','util','ckeditor','uploadify','datepicker','language','region'],
+define(['jquery','template','util','ckeditor','uploadify','datepicker','language','region','validate','form'],
   function($,template,util,CKEDITOR){
        //设置导航菜单选中
        util.setMenu('/main/index');
@@ -65,6 +65,40 @@ define(['jquery','template','util','ckeditor','uploadify','datepicker','language
                   { name: 'links', groups: [ 'links' ] }
               ]
             });
+          //处理表单提交
+          $('#settingsForm').validate({
+             sendForm:false,  //阻止默认提交
+             valid:function(){
+              //把富文本的数据同步到表单域中
+              for(var instance in CKEDITOR.instances){
+                CKEDITOR.instances[instance].updateElement();
+              }
+              //获取家乡数据
+              var p=$('#p options:selected').text();
+              var c=$('#c options:selected').text();
+              var d=$('#d options:selected').text();
+               var hometown=p+'|'+c+'|'+d;//三个信息的组合
+              //所有验证都通过，提交表单
+              $(this).ajaxSubmit({
+                   type:'post',
+                   url:'/api/teacher/modify',
+                   data:{tc_hometown:hometown},//可以添加自定义属性。,额外的添加
+                   dataType:'json',//返回值类型
+                   //success就是成功之后的回调函数
+                   success:function(data){
+                    if(data.code==200){
+                      //刷新页面
+                      location.reload();//reload就是重新加载，是location内部的一个方法
+
+                    }
+
+                   }
+
+              });
+
+             }
+          });
+
            }
        });
 });
