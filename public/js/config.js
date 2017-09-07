@@ -19,6 +19,8 @@ require.config({
         //uploadify不是jquery标准插件，需要加垫片
         region:'jquery-region/jquery.region',
         //region是标准模块，不需要加垫片
+        ckeditor:'ckeditor/ckeditor',
+        // ckeditor不是jquery插件，也不是js模块，它里面没有define,所以要垫片。
         common:'../js/common',
         login:'../js/login',
         index:'../js/index',
@@ -41,7 +43,14 @@ require.config({
         },
         uploadify:{
             deps:['jquery']
-        }
+        },
+        // ckeditor向全局导出一个成员:CKEDITOR.注意区分大小写。
+        //只导出了这一个。导完之后在setting里面要导出来。
+        //jquery导出了两个，$和jquery.
+        //一般遵循的原则：尽可能少的导出。
+        ckeditor:{
+            exports:'CKEDITOR'
+        }        
     }
 });
 

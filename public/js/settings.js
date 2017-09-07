@@ -1,4 +1,5 @@
-define(['jquery','template','util','uploadify','datepicker','language','region'],function($,template,util){
+define(['jquery','template','util','ckeditor','uploadify','datepicker','language','region'],
+  function($,template,util,CKEDITOR){
        //设置导航菜单选中
        util.setMenu('/main/index');
        //调用后台接口填充表单
@@ -55,15 +56,15 @@ define(['jquery','template','util','uploadify','datepicker','language','region']
             $('#pcd').region({
               url:'/public/assets/jquery-region/region.json'
             });
-
-
-
-
-
-
-
-
-
+            //处理富文本
+            // replace是提供的一个api.是对象的内部的一个方法。其实他有很多方法。
+            CKEDITOR.replace('ckeditor',{
+                toolbarGroups : [
+                  { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                  { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                  { name: 'links', groups: [ 'links' ] }
+              ]
+            });
            }
        });
 });
